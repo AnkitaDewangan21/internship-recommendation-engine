@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Based Smart Internship Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- ============== HEADER ============== -->
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <div class="gov-emblem">🏛️</div>
+                <div class="header-text">
+                    <h1>AI-Based Smart Internship Recommendation System</h1>
+                    <p class="tagline">Ministry of Skill Development & Entrepreneurship</p>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#guidelines" class="nav-link">Guidelines</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============== MAIN CONTENT ============== -->
+    <main class="container">
+        <!-- HOME SECTION -->
+        <section id="home" class="content-section">
+            <div class="content-wrapper">
+                <!-- Left: Description & Features -->
+                <div class="left-column">
+                    <h2>Welcome to Smart Internship Recommendations</h2>
+                    <p class="intro-text">
+                        This AI-powered platform provides personalized internship recommendations tailored to your skills, 
+                        academic background, and career aspirations. Our intelligent system analyzes government internship 
+                        opportunities to match you with the perfect opportunity.
+                    </p>
+                    
+                    <h3>Key Features</h3>
+                    <ul class="features-list">
+                        <li>• AI-powered matching algorithm</li>
+                        <li>• 10+ government internship opportunities</li>
+                        <li>• Skill-based recommendations</li>
+                        <li>• Flexible internship modes (Remote, On-site, Hybrid)</li>
+                        <li>• Multiple specialization domains</li>
+                        <li>• Secure and confidential</li>
+                    </ul>
+                    
+                    <div class="note-box">
+                        <strong>⚠️ Important Note:</strong> This is a prototype interface for demonstration purposes 
+                        only and does not represent an official government service. All data and recommendations are 
+                        sample-based for academic evaluation.
+                    </div>
+                </div>
+
+                <!-- Right: Recommendation Form -->
+                <div class="right-column">
+                    <div class="form-section">
+                        <h2>Get Your Recommendations</h2>
+                        <p class="form-subtitle">Fill in your details to receive personalized internship suggestions</p>
+
+                        <form id="recommendationForm" class="recommendation-form">
+                            <!-- Row 1: Name & Email -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Full Name <span class="required">*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                                    <span class="error-message" id="nameError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                                    <span class="error-message" id="emailError"></span>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Academic Level & Discipline -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="academic_level">Academic Level <span class="required">*</span></label>
+                                    <select id="academic_level" name="academic_level" required>
+                                        <option value="">-- Select --</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="Undergraduate">Undergraduate (B.Tech / MBBS / B.Com etc.)</option>
+                                        <option value="Postgraduate">Postgraduate (M.Tech / MD / M.Com etc.)</option>
+                                    </select>
+                                    <span class="error-message" id="academicError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="discipline">Discipline/Major <span class="required">*</span></label>
+                                    <select id="discipline" name="discipline" required>
+                                        <option value="">-- Select --</option>
+                                        <!-- Engineering / Technology -->
+                                        <option value="Computer Science">Computer Science / IT</option>
+                                        <option value="AI/ML">Artificial Intelligence / Machine Learning</option>
+                                        <option value="Electronics">Electronics / Electrical</option>
+                                        <option value="Mechanical">Mechanical / Civil</option>
+                                        <!-- Medical / Health Sciences -->
+                                        <option value="MBBS">MBBS / Medicine</option>
+                                        <option value="Dental">BDS / Dental</option>
+                                        <option value="Nursing">BSc Nursing / Paramedical</option>
+                                        <option value="Pharmacy">B.Pharm / M.Pharm</option>
+                                        <option value="Public Health">Public Health / MPH</option>
+                                        <!-- Commerce / Management -->
+                                        <option value="BCom">B.Com / M.Com</option>
+                                        <option value="BBA">BBA / MBA</option>
+                                        <option value="Economics">Economics / Finance</option>
+                                        <option value="Accounting">Accounting / Taxation</option>
+                                        <!-- Other -->
+                                        <option value="Other">Other / Interdisciplinary</option>
+                                    </select>
+                                    <span class="error-message" id="disciplineError"></span>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Skills -->
+                            <div class="form-group full-width">
+                                <label for="skills">Key Skills <span class="required">*</span></label>
+                                <p class="helper-text">Enter comma-separated skills (e.g., Python, Machine Learning, Web Development)</p>
+                                <textarea id="skills" name="skills" rows="3" placeholder="Python, Data Analysis, Communication..." required></textarea>
+                                <span class="error-message" id="skillsError"></span>
+                            </div>
+
+                            <!-- Row 4: Preferred Domain -->
+                            <div class="form-group full-width">
+                                <label for="preferred_domain">Preferred Internship Domain <span class="required">*</span></label>
+                                <select id="preferred_domain" name="preferred_domain" required>
+                                    <option value="">-- Select --</option>
+
+                                    <!-- Technology / Engineering domains -->
+                                    <option value="Data Science">Data Science</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Mobile Development">Mobile Development</option>
+                                    <option value="Cyber Security">Cyber Security</option>
+                                    <option value="Cloud / DevOps">Cloud / DevOps</option>
+                                    <option value="Government Scheme Implementation">Government Scheme Implementation</option>
+                                    <!-- Medical / Health domains (match new dataset entries) -->
+                                    <option value="Medical Research">Medical Research</option>
+                                    <option value="Healthcare Management">Healthcare Management</option>
+
+                                    <!-- Commerce / Finance domains (match new dataset entries) -->
+                                    <option value="Finance & Accounting">Finance & Accounting</option>
+                                    <option value="Taxation">Taxation</option>
+                                    <option value="Banking & Finance">Banking & Finance</option>
+                                </select>
+                                <span class="error-message" id="domainError"></span>
+                            </div>
+
+                            <!-- Row 5: Location & Internship Type -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="preferred_location">Preferred Location <span class="required">*</span></label>
+                                    <input type="text" id="preferred_location" name="preferred_location" placeholder="e.g., Raipur, Delhi, Remote" required>
+                                    <span class="error-message" id="locationError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="internship_type">Internship Type <span class="required">*</span></label>
+                                    <select id="internship_type" name="internship_type" required>
+                                        <option value="">-- Select --</option>
+                                        <option value="Online / Remote">Online / Remote</option>
+                                        <option value="On-site">On-site</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                    </select>
+                                    <span class="error-message" id="typeError"></span>
+                                </div>
+                            </div>
+
+                            <!-- Row 6: Duration Preference -->
+                            <div class="form-group full-width">
+                                <label for="duration_preference">Duration Preference <span class="required">*</span></label>
+                                <select id="duration_preference" name="duration_preference" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="4 weeks">4 weeks</option>
+                                    <option value="8 weeks">8 weeks</option>
+                                    <option value="12 weeks+">12 weeks+</option>
+                                </select>
+                                <span class="error-message" id="durationError"></span>
+                            </div>
+
+                            <!-- Confirmation Checkbox -->
+                            <div class="form-group checkbox-group">
+                                <label for="confirmation">
+                                    <input type="checkbox" id="confirmation" name="confirmation" required>
+                                    I confirm that the above information is correct <span class="required">*</span>
+                                </label>
+                                <span class="error-message" id="confirmError"></span>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-buttons">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    Get Recommendations
+                                </button>
+                                <button type="reset" class="btn btn-secondary">Clear Form</button>
+                            </div>
+
+                            <!-- Loading Spinner -->
+                            <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                                <div class="spinner"></div>
+                                <p>Processing your request...</p>
+                            </div>
+                        </form>
+
+                        <!-- Validation Error Container -->
+                        <div class="validation-error" id="validationError" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" style="display: none; margin-top: 3rem;">
+                <h2>Your Personalized Recommendations</h2>
+                <p class="results-subtitle">Based on your profile and preferences, here are the best matching internship opportunities:</p>
+                <div class="results-container" id="resultsContainer"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="content-section">
+            <h2 style="margin-bottom: 0.5rem;">About This System</h2>
+            <div class="info-box">
+                <h3>AI-Powered Recommendation Engine</h3>
+                <p>
+                    The AI-Based Smart Internship Recommendation System leverages advanced machine learning algorithms 
+                    to analyze your profile and match you with the most suitable government internship opportunities. 
+                    Our intelligent engine considers multiple factors including your skills, academic background, 
+                    preferred location, and career aspirations.
+                </p>
+                <h3>How It Works</h3>
+                <ol class="how-it-works">
+                    <li>You provide your profile information and preferences</li>
+                    <li>Our AI analyzes skill overlaps and domain compatibility</li>
+                    <li>The system calculates a match score for each internship</li>
+                    <li>Top recommendations are displayed sorted by relevance</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- GUIDELINES SECTION -->
+        <section id="guidelines" class="content-section">
+            <h2 style="margin-bottom: 0.5rem;">Guidelines & Instructions</h2>
+            <div class="info-box">
+                <h3>How to Use the System</h3>
+                <ul class="guidelines-list">
+                    <li><strong>Fill Accurately:</strong> Provide accurate information for better recommendations</li>
+                    <li><strong>Be Specific:</strong> List your actual skills and relevant experience</li>
+                    <li><strong>Flexibility:</strong> Consider internships in nearby locations or different modes</li>
+                    <li><strong>Verification:</strong> Verify all organization details before applying</li>
+                    <li><strong>Timeline:</strong> Check internship durations that match your availability</li>
+                </ul>
+                <h3>Important Information</h3>
+                <p>
+                    This is a prototype system for demonstration purposes. All recommendations are based on a sample dataset. 
+                    For official internship applications and eligibility requirements, please contact the respective government 
+                    ministry or organization directly.
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+<section id="contact" class="content-section">
+    <h2 style="margin-bottom: 0.5rem;">Contact Information</h2>
+    <div class="contact-info">
+        <div class="contact-box">
+            <h3>Development and Support Team - Neonovate</h3>
+            <p><strong>Address:</strong> Raipur, Chhattisgarh, India</p>
+            <p><strong>Email:</strong> ritesh.bisen2023@ssipmt.com</p>
+            <p><strong>Phone:</strong> 1800-XXXX-XXXX (Toll-Free)</p>
+        </div>
+        <div class="contact-box">
+            <h3>Support & Feedback</h3>
+            <p>For technical issues or feedback, please contact our support team.</p>
+            <p>We are committed to improving your experience with this platform.</p>
+        </div>
+    </div>
+
+    <!-- DEVELOPMENT TEAM SECTION -->
+    <div style="margin-top: 3rem;">
+        <h2 style="margin-bottom: 0.5rem;">Development Team</h2>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">👨</div>
+                <h4><a href="https://www.linkedin.com/in/ritesh-bisen-7b6bb7317/">Ritesh Bisen</a></h4>
+                <p>Project Lead, AI & ML</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">👩</div>
+                <h4><a href="https://www.linkedin.com/in/ankita-dewangan-8229a22a5">Ankita Dewangan</a></h4>
+                <p>UI/UX Designer</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">👩</div>
+                <h4><a href="https://www.linkedin.com/in/sasha-kolhatkar-407588288">Sasha Kolhatkar</a></h4>
+                <p>Data Scientist</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">👨</div>
+                <h4><a href="https://www.linkedin.com/in/anirudh-gupta-1a39b01b8">Anirudh Gupta</a></h4>
+                <p>Documentation Head</p>
+            </div>
+        </div>
+</section>
+
+    </main>
+
+    <!-- ============== FOOTER ============== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#guidelines">Guidelines</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Accessibility</a>
+            </div>
+            <div class="footer-section">
+                <h4>Important</h4>
+                <p style="font-size: 0.9rem; margin: 0;">This application is a prototype developed as part of a minor academic project. It is intended solely for demonstration and educational purposes. The services displayed do not represent any official government endorsements.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Government of India 2025 | AI-Based Smart Internship Recommendation System | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- ============== NOTIFICATION CONTAINER ============== -->
+    <div id="notificationContainer"></div>
+
+    <!-- ============== SCRIPTS ============== -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
